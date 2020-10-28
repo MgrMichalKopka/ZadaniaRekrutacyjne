@@ -1,0 +1,51 @@
+from _decimal import Decimal
+
+# Zadanie pierwsze
+def request_one():
+    code_a ='79-900'
+    code_b = '80-155'
+    code_list_a = code_a.split('-')   # pierwszy kod jako lista
+    code_list_b = code_b.split('-')   # ostatni kod jako lista
+    first_number = int(code_list_a[0]) * 1000 + int(code_list_a[1])   # pierwszy kod jako liczba całkowita
+    second_number = int(code_list_b[0]) * 1000 + int(code_list_b[1])  # ostatni kod jako liczba całkowita
+    result_list = []
+
+    # generowanie kodów:
+
+    for number in range(first_number, second_number+1):       # dla wszsystkich liczb w podanym zakresie
+        string_number = str(number)                         # generuję odpowiadający im kod pocztowy.
+        first_part_code = string_number[:2]                 # np. liczbie 79 900 odpowiada kod 79-900 itd.
+        second_part_code = string_number[2:]
+        result_list.append(first_part_code + '-' + second_part_code)
+    return result_list
+
+
+# Zadanie drugie
+def request_two():
+    list = [2, 3, 7, 4, 9]
+    limit = 10
+    result_list = []
+
+    # przeszukiwanie listy:
+    limit = int(limit) + 1
+    for number in range(1, limit):        # dla wszystkich liczb z podanego zakresiu
+        if not list.count(number):          # sprawdzam czy znajduje się ona na podanej liśćie za pomocą funkcji count
+            result_list.append(number)      # funkcja count zwraca liczbę wystąpień podanej liczby w liście
+    return result_list                      # jeśli jednak nie istnieje zwraca false
+
+
+# Zadanie trzecie
+def request_three():
+    start_number = Decimal(2)
+    stop_number = Decimal(5.5)
+    step = Decimal(0.5)
+    result = []
+
+    # Generowanie liczb:
+
+    while start_number <= stop_number:          # Używając pętli while wpisuję do nowej listy
+        result.append(start_number)             # kolejne poszukiwane wartośći
+        start_number = start_number + step
+
+    return result
+
